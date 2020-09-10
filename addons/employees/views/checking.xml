@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="employees_checking_tree" model="ir.ui.view">
+        <field name="name">employees.checking.tree</field>
+        <field name="model">employees.checking</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="employee_id"/>
+                <field name="time_checking" widget="float_time"/>
+                
+                <field name="date"/>
+                <field name="date_day"/>
+                <field name="total_late"/>
+                <!-- <field name="time_out" widget="float_time"/> -->
+                <!-- <field name="time_in" widget="float_time"/> -->
+
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="employees_checking_form" model="ir.ui.view">
+        <field name="name">employees.checking.form</field>
+        <field name="model">employees.checking</field>
+        <field name="arch" type="xml">
+            <form string="Checking">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="time_checking" widget="float_time"/>
+                            <field name="date"/>
+                            <field name="status_work"/>
+                            <field name="department_id" />
+                            <field name="date_day" />
+                            <field name="total_late" />
+                            <field name="total" />
+                        </group>
+                        <group>
+                            
+                            <field name="device_id" />
+                            <field name="notes"></field>
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="employees_checking_search" model="ir.ui.view">
+        <field name="name">employees.checking.search</field>
+        <field name="model">employees.checking</field>
+        <field name="arch" type="xml">
+            <search string="Search Employee">
+                <!-- <field name="employee_id" filter_domain="['|',('employee_id', 'ilike', self)]"/> -->
+                <!-- <field name="timesheet_id"/> -->
+                <field name="employee_id"/>
+                <field name="date" />
+                <separator />
+                <!-- <filter string="Day" domain="[]" context="{'group_by': 'date'}" /> -->
+                <!-- <filter string="Fulltime" name="fulltime" domain="[('method_work', '=', 'fulltime')]"/> -->
+                <!-- <filter string="Parttime" name="parttime" domain="[('method_work', '=', 'parttime')]"/> -->
+                <searchpanel>
+                    <field name="department_id" icon="fa-users" />
+                </searchpanel>
+
+            </search>
+        </field>
+
+    </record>
+
+    <record id="action_employees_checking" model="ir.actions.act_window">
+        <field name="name">Checking</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">employees.checking</field>
+        <!-- <field name="view_type">form</field> -->
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Create your First Checking !
+          </p>
+        </field>
+    </record>
+    <menuitem id="hr_employees_checking" name="Chấm công" action="action_employees_checking" parent="employees_employee_root_menu"  web_icon="" sequence="10" groups="base.group_user"/>
+
+    <!-- <menuitem id="hr_employees_timesheet"  name="Timesheet" action="action_employees_timesheet" sequence="30"/> -->
+
+
+</odoo>

@@ -7,8 +7,10 @@ services:
       - POSTGRES_USER=odoo
       - POSTGRES_DB=postgres
     restart: always             # run as a service
-    volumes:
-        - ./postgresql:/var/lib/postgresql/data
+    # volumes:
+    #   # - odoo-web-data:/var/lib/odoo
+    #   - ./config:/etc/odoo
+    #   - ./addons:/mnt/extra-addons
 
   odoo13:
     image: odoo:13
@@ -18,7 +20,7 @@ services:
       - "10013:8069"
     tty: true
     command: -- --dev=reload
-#    command: odoo scaffold /mnt/extra-addons/test_module
+    # command: odoo scaffold /mnt/extra-addons/test_module
     volumes:
       - ./addons:/mnt/extra-addons
       - ./etc:/etc/odoo

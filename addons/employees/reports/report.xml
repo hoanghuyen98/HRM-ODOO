@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <report
+        id="report_checking_card"
+        string="Checking Card"
+        model="employees.checking"
+        report_type="qweb-pdf"
+        name="employees.report_checking"
+        file="employees.report_checking"/>
+
+    <report
+        id="report_checking_card_xls"
+        string="Xuất chấm công cho từng nhân viên"
+        model="employees.checking"
+        report_type="xlsx"
+        name="employees.report_checking_xls"
+        file="employees.report_checking_xls"/>
+
+    <report
+        id="report_all_checking_card_xls"
+        string="Xuất chấm công cả công ty"
+        model="employees.checking"
+        report_type="xlsx"
+        name="employees.report_all_checking_xls"
+        file="employees.report_all_checking_xls"/>
+
+</odoo>

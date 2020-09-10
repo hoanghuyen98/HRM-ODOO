@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="employees_scheduler_tree" model="ir.ui.view">
+        <field name="name">employees.scheduler.tree</field>
+        <field name="model">employees.scheduler</field>
+        <field name="arch" type="xml">
+            <tree string="Scheduler">
+                <field name="shift_id"/>
+                <field name="time_start" />
+                <field name="time_finish" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="employees_scheduler_form" model="ir.ui.view">
+        <field name="name">employees.scheduler.form</field>
+        <field name="model">employees.scheduler</field>
+        <field name="arch" type="xml">
+        <form string="Shift">
+            <sheet>
+                <!-- <widget name="web_ribbon" title="Archived" bg_color="bg-danger" />
+                <field name="active" invisible="1"/> -->
+                <group>
+                    <group>
+                        <field name="shift_id"/>
+                        <field name="time_start"  widget="float_time"/>
+                        <field name="time_finish"  widget="float_time"/>
+                    </group>
+                    <group>
+                        <field name="timesleep_start"  widget="float_time"/>
+                        <field name="timesleep_finish"  widget="float_time" />
+                        <field name="count_the_work" />
+            
+                    </group>
+                    <group>
+                        <field name="total_hours" />
+                    </group>
+                    <!-- <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/> -->
+                </group>
+            </sheet>
+        </form>
+        </field>
+    </record>
+
+    <!-- <record id="employees_department_kanban" model="ir.ui.view">
+        <field name="name">employees.department.kanban</field>
+        <field name="model">employees.department</field>
+        <field name="arch" type="xml">
+            <kanban >
+                <field name="id"/>
+                <field name="manager_id"/>
+                <field name="note"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_hospital_patient_kanban">
+                           
+                               <div class="o_kanban_record_top">
+                                   <div class="o_kanban_record_headings">
+                                       <strong class="o_kanban_record_title">
+        
+                                            <field name="name" placeholder="Tên phòng/ban"/>
+                                       </strong>
+                                       <span class="o_kanban_record_subtitle"><field name="manager_id"/></span>
+                                   </div>
+                               </div>
+                            
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record> -->
+
+
+    <record id="employees_scheduler_search_view" model="ir.ui.view">
+        <field name="name">eemployees.scheduler.search</field>
+        <field name="model">employees.scheduler</field>
+        <field name="arch" type="xml">
+
+            <search string="Scheduler">
+                <field name="shift_id" filter_domain="[('shift_id','ilike',self)]" string="Ca làm việc" />
+                <!-- <field name="name_seq" filter_domain="[('name_seq','ilike',self)]" string="Tên nhân sự" /> -->
+                <separator />
+                <!-- <filter string="Fulltime" name="fulltime" domain="[('method_work', '=', 'fulltime')]" /> -->
+                <!-- <filter string="Parttime" name="parttime" domain="[('method_work', '=', 'parttime')]" /> -->
+                <searchpanel>
+                    <!-- <field name="start_of_work" icon="fa-building" /> -->
+                    <!-- <field name="manager_id" icon="fa-users" /> -->
+                </searchpanel>
+            </search>
+ 
+        </field>
+        
+    </record>
+
+    <record id="action_employees_scheduler" model="ir.actions.act_window">
+        <field name="name">Scheduler</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">employees.scheduler</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your Scheduler here
+            </p>
+        </field>
+        
+    </record>
+
+    <!-- <menuitem id="employees_department_root_menu" name="Department" web_icon="" sequence="7"/> -->
+    <menuitem id="employees_scheduler" name="Ca làm việc" action="action_employees_scheduler" parent="employees_employee_root_menu"  web_icon="" sequence="10" groups="base.group_user"/>
+</odoo>

@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_employees_employee,access.employees.employee,model_employees_employee,,1,1,1,1
+access_employees_department,access.employees.department,model_employees_department,,1,1,1,1
+access_employees_job,access.employees.job,model_employees_job,,1,1,1,1
+access_employees_checking,access.employees.checking,model_employees_checking,,1,1,1,1
+access_employees_scheduler,access.employees.scheduler,model_employees_scheduler,,1,1,1,1
+access_employees_user_has_scheduler,access.employees.user.has.scheduler,model_employees_user_has_scheduler,,1,1,1,1
+access_employees_timekeeper,access.employees.timekeeper,model_employees_timekeeper,,1,1,1,1

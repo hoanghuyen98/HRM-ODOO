@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="employees_job_tree" model="ir.ui.view">
+        <field name="name">employees.job.tree</field>
+        <field name="model">employees.job</field>
+        <field name="arch" type="xml">
+            <tree string="Job">
+                <field name="name"/>
+                <!-- <field name="department_id"/> -->
+            </tree>
+        </field>
+    </record>
+
+    <record id="employees_job_form" model="ir.ui.view">
+        <field name="name">employees.job.form</field>
+        <field name="model">employees.job</field>
+        <field name="arch" type="xml">
+        <form string="Job">
+            <sheet>
+                <!-- <widget name="web_ribbon" title="Archived" bg_color="bg-danger" />
+                <field name="active" invisible="1"/> -->
+                <!-- <group> -->
+                    <group col="4">
+                        <field name="name"/>
+                        <field name="note"/>
+                        <!-- <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/> -->
+                    </group>
+                <!-- </group> -->
+            </sheet>
+        </form>
+        </field>
+    </record>
+
+    <record id="employees_job_search_view" model="ir.ui.view">
+        <field name="name">employees.job.search</field>
+        <field name="model">employees.job</field>
+        <field name="arch" type="xml">
+
+            <search string="Job">
+                <field name="name" filter_domain="[('name','ilike',self)]" string="Chức vụ" />
+                <!-- <field name="name_seq" filter_domain="[('name_seq','ilike',self)]" string="Tên nhân sự" />
+                <separator />
+                <filter string="Fulltime" name="fulltime" domain="[('method_work', '=', 'fulltime')]" />
+                <filter string="Parttime" name="parttime" domain="[('method_work', '=', 'parttime')]" /> -->
+                <searchpanel>
+                    <field name="department_id" icon="fa-users" />
+                    <!-- <field name="method_work" icon="fa-space-shuttle" /> -->
+                </searchpanel>
+            </search>
+ 
+        </field>
+        
+    </record>
+
+    <record id="action_employees_job" model="ir.actions.act_window">
+        <field name="name">Job</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">employees.job</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your Job here
+            </p>
+        </field>
+        
+    </record>
+    <menuitem id="employees_job_menu" name="Chức vụ" action="action_employees_job" parent="employees_employee_root_menu"  web_icon="" sequence="10" groups="base.group_user"/>
+
+    <!-- <menuitem id="employees_job_menu" name="Jobs" action="action_employees_job" parent="employees_job_root_menu"  web_icon="" sequence="10" groups="base.group_user"/> -->
+</odoo>

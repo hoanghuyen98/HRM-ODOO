@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="employees_employee_tree" model="ir.ui.view">
+        <field name="name">employees.employee.tree</field>
+        <field name="model">employees.employee</field>
+        <field name="arch" type="xml">
+            <tree string="Employee">
+                <field name="name"/>
+                <field name="method_work" />
+                <!-- <field name="email"/> -->
+                <field name="name_seq"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="employees_employee_form" model="ir.ui.view">
+        <field name="name">employees.employee.form</field>
+        <field name="model">employees.employee</field>
+        <field name="arch" type="xml">
+            <form string="Employee">
+                <header>
+                    <h1>Hello</h1>
+                </header>
+                <sheet>
+
+                    <widget name="web_ribbon" text="Đang làm việc" bg_color="bg-success" attrs="{'invisible': [('status_work', '=', 'inactive')]}" />
+                    <widget name="web_ribbon" text="Đã nghỉ làm" bg_color="bg-danger" attrs="{'invisible': [('status_work', '=', 'active')]}" />
+
+                    
+                    <group>
+                        <group>
+                            <field name="image" widget="image"/>
+                        </group>
+                        <group>
+                            <field name="name" placeholder="Mã nhân viên" />
+                            <field name="name_seq" />
+                            <field name="email" />
+                            <field name="phone" />
+                            <field name="method_work" />
+                            <!-- <field name="timesheet_id" /> -->
+                            <field name="status_work" />
+                            <field name="x_wage" />
+                            <field name="department_id" />
+                            <field name="job_id" />
+                        </group>
+
+                    </group>
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" options='{"thread_level":1}' />
+
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="employees_employee_kanban" model="ir.ui.view">
+        <field name="name">employees.employee.kanban</field>
+        <field name="model">employees.employee</field>
+        <field name="arch" type="xml">
+            <kanban >
+                <field name="id"/>
+
+                <field name="name"/>
+                <field name="image"/>
+                <field name="name_seq"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_hospital_patient_kanban">
+                           <t t-if="record.image.raw_value">
+                                <div class="o_kanban_image_fill_left d-none d-md-block"
+                                     t-attf-style="background-image:url('#{kanban_image('employees.employee', 'image', record.id.raw_value)}')"/>
+                            </t>
+                            <t t-else="">
+                            
+                                <img class="o_kanban_image" alt="Avatar"  t-att-src='_s + "/base/static/img/avatar.png" '/>
+                            </t>
+                            <div class="oe_kanban_details">
+                               <div class="o_kanban_record_top">
+                                   <div class="o_kanban_record_headings">
+                                       <strong class="o_kanban_record_title">
+        
+                                            <field name="name" placeholder="Mã nhân viên"/>
+                                       </strong>
+                                       <span class="o_kanban_record_subtitle"><field name="job_id"/></span>
+                                   </div>
+                               </div>
+                               <ul>
+                                   <li id="last_login"/>
+                                   <li class="o_text_overflow"><field name="email"/></li>
+                                   <li class="o_force_ltr"><field name="phone"/></li>
+                               </ul>
+                            </div>
+                        </div>
+                    </t>
+                    <searchpanel>
+                        <field name="department_id" icon="fa-building"/>
+                        <field name="status_work" select="multi" icon="fa-tags"/>
+                    </searchpanel>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <record id="employees_employee_search_view" model="ir.ui.view">
+        <field name="name">employees.employee.search</field>
+        <field name="model">employees.employee</field>
+        <field name="arch" type="xml">
+
+            <search string="Employee">
+                <field name="name" filter_domain="[('name','ilike',self)]" string="Mã nhân sự" />
+                <field name="name_seq" filter_domain="[('name_seq','ilike',self)]" string="Tên nhân sự" />
+                <separator />
+                <filter string="Fulltime" name="fulltime" domain="[('method_work', '=', 'fulltime')]" />
+                <filter string="Parttime" name="parttime" domain="[('method_work', '=', 'parttime')]" />
+                <searchpanel>
+                    <field name="department_id" icon="fa-users" />
+                    <field name="method_work" icon="fa-space-shuttle" />
+                </searchpanel>
+            </search>
+ 
+        </field>
+        
+    </record>
+
+    <record id="action_employees_employee" model="ir.actions.act_window">
+        <field name="name">Employee</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">employees.employee</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your employee here
+            </p>
+        </field>
+        
+    </record>
+
+    <menuitem id="employees_employee_root_menu" name="Nhân viên" web_icon="" sequence="7"/>
+    <menuitem id="employees_employee_menu" name="Nhân Viên" action="action_employees_employee" parent="employees_employee_root_menu"  web_icon="" sequence="10" groups="base.group_user"/>
+</odoo>
