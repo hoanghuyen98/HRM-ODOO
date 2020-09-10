@@ -14,12 +14,7 @@ class EmployeeTimesheet(models.Model):
     
     @api.onchange('date')
     def _get_day_of_date(self):
-        # for record in self:
-        #     if record.date: 
 
-        #         selected = fields.Datetime.from_string(record.date)
-        #         record.date_day = calendar.day_name[selected.weekday()]
-                        # record.expected_working_hours = res_calendar.expected_working_hours
         for r in self:
             if r.date :
                 selected = fields.Datetime.from_string(r.date)

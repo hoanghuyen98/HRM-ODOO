@@ -8,7 +8,5 @@ class EmployeeJob(models.Model):
 
 
     employee_id = fields.Many2one('employees.employee', string='Nhân viên', required=True)
-    # department_id = fields.Many2one('employee.department',string='Phòng/ban', required=True)
     scheduler_id = fields.Many2one('employees.scheduler', string='Ca làm việc')
-    # checking_id = fields.One2many('employees.checking', string='Chấm công')
     note = fields.Text('Ghi chú')

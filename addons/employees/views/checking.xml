@@ -12,9 +12,6 @@
                 <field name="date"/>
                 <field name="date_day"/>
                 <field name="total_late"/>
-                <!-- <field name="time_out" widget="float_time"/> -->
-                <!-- <field name="time_in" widget="float_time"/> -->
-
             </tree>
         </field>
     </record>
@@ -54,14 +51,9 @@
         <field name="model">employees.checking</field>
         <field name="arch" type="xml">
             <search string="Search Employee">
-                <!-- <field name="employee_id" filter_domain="['|',('employee_id', 'ilike', self)]"/> -->
-                <!-- <field name="timesheet_id"/> -->
                 <field name="employee_id"/>
                 <field name="date" />
                 <separator />
-                <!-- <filter string="Day" domain="[]" context="{'group_by': 'date'}" /> -->
-                <!-- <filter string="Fulltime" name="fulltime" domain="[('method_work', '=', 'fulltime')]"/> -->
-                <!-- <filter string="Parttime" name="parttime" domain="[('method_work', '=', 'parttime')]"/> -->
                 <searchpanel>
                     <field name="department_id" icon="fa-users" />
                 </searchpanel>
@@ -75,7 +67,6 @@
         <field name="name">Checking</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">employees.checking</field>
-        <!-- <field name="view_type">form</field> -->
         <field name="view_mode">tree,form</field>
         <field name="context">{}</field>
         <field name="help" type="html">

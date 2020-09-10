@@ -7,7 +7,6 @@
         <field name="arch" type="xml">
             <tree string="Job">
                 <field name="name"/>
-                <!-- <field name="department_id"/> -->
             </tree>
         </field>
     </record>
@@ -41,7 +40,6 @@
                 <field name="name" filter_domain="[('name','ilike',self)]" string="Chức vụ" />
                 <!-- <field name="name_seq" filter_domain="[('name_seq','ilike',self)]" string="Tên nhân sự" />
                 <separator />
-                <filter string="Fulltime" name="fulltime" domain="[('method_work', '=', 'fulltime')]" />
                 <filter string="Parttime" name="parttime" domain="[('method_work', '=', 'parttime')]" /> -->
                 <searchpanel>
                     <field name="department_id" icon="fa-users" />

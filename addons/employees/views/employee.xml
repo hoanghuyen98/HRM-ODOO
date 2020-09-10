@@ -9,7 +9,6 @@
             <tree string="Employee">
                 <field name="name"/>
                 <field name="method_work" />
-                <!-- <field name="email"/> -->
                 <field name="name_seq"/>
             </tree>
         </field>
@@ -39,7 +38,6 @@
                             <field name="email" />
                             <field name="phone" />
                             <field name="method_work" />
-                            <!-- <field name="timesheet_id" /> -->
                             <field name="status_work" />
                             <field name="x_wage" />
                             <field name="department_id" />
