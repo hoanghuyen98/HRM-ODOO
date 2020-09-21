@@ -6,3 +6,4 @@ access_employees_checking,access.employees.checking,model_employees_checking,,1,
 access_employees_scheduler,access.employees.scheduler,model_employees_scheduler,,1,1,1,1
 access_employees_user_has_scheduler,access.employees.user.has.scheduler,model_employees_user_has_scheduler,,1,1,1,1
 access_employees_timekeeper,access.employees.timekeeper,model_employees_timekeeper,,1,1,1,1
+access_employee_lines,access.employee.lines,model_employee_lines,,1,1,1,1

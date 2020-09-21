@@ -3,27 +3,22 @@ import calendar
 import pytz
 from odoo import models, fields, api,  _
 from datetime import datetime, date
+DAY_MAP = {
+    0: "Thứ 2",
+    1: "Thứ 3",
+    2: "Thứ 4",
+    3: "Thứ 5",
+    4: "Thứ 6",
+    5: "Thứ 7",
+    6: "Chủ nhật"
+}
 
 def _get_day_of_date(date):
 
     if date :
-        selected = fields.Datetime.from_string(date)
-        date_day = calendar.day_name[selected.weekday()]
-        if date_day == "Monday":
-            date_day = "Thứ 2"
-        if date_day == "Tuesday":
-            date_day = "Thứ 3"
-        if date_day == "Wednesday":
-            date_day = "Thứ 4"
-        if date_day == "Thursday":
-            date_day = "Thứ 5"
-        if date_day == "Friday":
-            date_day = "Thứ 6"
-        if date_day == "Saturday":
-            date_day = "Thứ 7"
-        if date_day == "Sunday":
-            date_day = "Chủ nhật" 
-    return date_day
+        date_day = date.weekday()
+        return DAY_MAP[date_day]
+    return 0
 
 def number_of_days(m, y):
     leap = 0

@@ -12,7 +12,7 @@
     <report
         id="report_checking_card_xls"
         string="Xuất chấm công cho từng nhân viên"
-        model="employees.checking"
+        model="employees.user.has.scheduler"
         report_type="xlsx"
         name="employees.report_checking_xls"
         file="employees.report_checking_xls"/>
@@ -20,7 +20,7 @@
     <report
         id="report_all_checking_card_xls"
         string="Xuất chấm công cả công ty"
-        model="employees.checking"
+        model="employees.user.has.scheduler"
         report_type="xlsx"
         name="employees.report_all_checking_xls"
         file="employees.report_all_checking_xls"/>
