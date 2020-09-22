@@ -28,16 +28,18 @@ def get_report_of_employee_between_two_date(employee_code, start_date, end_date,
 
 def get_report_of_employee_by_date(employee_code, date, start_time_keeping, end_time_keeping):
     working_shift = get_working_shift_by_date(employee_code, date)
+   
     shift = 0
     for sch in WORKING_SHIFT:
+        
         if sch==working_shift:
             start_time = WORKING_SHIFT[sch]['start_time']
             end_time = WORKING_SHIFT[sch]['end_time']
-            if (start_time <= start_time_keeping)  and (end_time >= float(end_time_keeping)):
+            if (start_time >= start_time_keeping)  and (end_time <= end_time_keeping):
                 shift = 1
             else:
                 shift = 0.5
-         
+        
     return shift
     
 def get_working_shift_by_date(employee_code, date):
@@ -52,7 +54,7 @@ def get_working_shift_by_date(employee_code, date):
         for sche in WORKING_SHIFT:
             if sche == 'HCFT':
                 DEFAULT_WORKING_SHIFT = sche
-                check_point = "2020/09/18"
+                check_point = "2020-09-18"
                 # check_point = datetime.datetime.fromtimestamp(0807967564)
                 day = date.weekday()
 
@@ -65,6 +67,6 @@ def get_working_shift_by_date(employee_code, date):
                 return DEFAULT_WORKING_SHIFT if (sub_day / 7) % 2 == 0 else None 
 
 def days_between(d1, d2):
-        d1 = datetime.strptime(d1, "%Y-%m-%d")
-        d2 = datetime.strptime(d2, "%Y-%m-%d")
+        d1 = datetime.strptime(str(d1), "%Y-%m-%d")
+        d2 = datetime.strptime(str(d2), "%Y-%m-%d")
         return abs((d2 - d1).days)  

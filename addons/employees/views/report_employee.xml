@@ -18,27 +18,34 @@
                 <!-- </group> -->
                 <notebook>
                     <page string="string">
-                        <!-- <field name="type_report" /> -->
-                            <field name="employee_line">
-                                <tree editable="bottom">
-                                    <field name="employee_name"  options='{"no_open": True,"no_create": 1, "no_create_edit": 1}' string="Nhân viên" />
+                        <!-- <field name="type_report" attrs="{'invisible':[('clone', '=', 'clone')]}"> -->
+                            
+                                <field name="employee_line">
+                                    <tree editable="bottom">
+                                        
+                                        <field name="employee_name"  options='{"no_open": True,"no_create": 1, "no_create_edit": 1}' string="Nhân viên" />
 
-                                    <!-- <field name="employee_name" /> -->
-                                    <field name="method_work" />
-                                    <field name="status_work" />
-                                    <field name="department_id" />
-                                </tree>
-                                <form>
-                                    <group>
-                                        <field name="employee_name" />
-                                    </group>
-                                </form>
-                            </field>
+                                        <!-- <field name="employee_name" /> -->
+                                        <field name="method_work" />
+                                        <field name="status_work" />
+                                        <field name="department_id" />
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="employee_name" />
+                                        </group>
+                                    </form>
+                                </field>
+                          
                         <!-- </field> -->
                     </page>
                 </notebook>
                <!-- <button name="send_mail_template" string="Export" type="action" class="oe_highlight"/> -->
-                <button name="print_report" string="Create Appointment" type="object"
+                <button name="print_report" string="Xuất từng nhân viên" type="object"
+                            class="oe_highlight"/>
+                <br/>
+                <br/>
+                <button name="print_report_all" string="Xuất cả công ty" type="object"
                             class="oe_highlight" />
             </sheet>
         </form>

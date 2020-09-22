@@ -27,7 +27,7 @@
                         <group>
                             <field name="employee_id"/>
                             <field name="time_checking" widget="float_time"/>
-                            <field name="date"/>
+                            <field name="date" />
                             <field name="status_work"/>
                             <field name="department_id" />
                             <field name="date_day" />
@@ -52,7 +52,7 @@
         <field name="arch" type="xml">
             <search string="Search Employee">
                 <field name="employee_id"/>
-                <field name="date" />
+                <field name="date"  />
                 <separator />
                 <searchpanel>
                     <field name="department_id" icon="fa-users" />

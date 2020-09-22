@@ -17,6 +17,7 @@ class Employee(models.Model):
     name_seq = fields.Char(string='Tên nhân sự', required=False, )
     email = fields.Char(string='Email')
     phone = fields.Char(string='Số điện thoại')
+    birth_day =  fields.Date(string='Ngày sinh')
     method_work = fields.Selection([
         ('fulltime', 'Fulltime'),
         ('parttime', 'Parttime')

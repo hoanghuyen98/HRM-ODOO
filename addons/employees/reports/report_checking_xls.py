@@ -48,7 +48,7 @@ class CheckingALLXlsx(models.AbstractModel):
             employee = self.env['employees.employee'].search([('id', '=', item['employee_id'])])
             if employee is None:
                 raise Exception("Employee not found")
-            shift = working_shift.get_report_of_employee_by_date(employee,item['date'], item['min'], item['max'] )
+            shift = working_shift.get_report_of_employee_by_date(employee, item['date'], item['min'], item['max'] )
             vals = {
                 'id': employee[0].id,
                 'name': employee[0].name,

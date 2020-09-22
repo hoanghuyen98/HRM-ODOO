@@ -10,6 +10,7 @@
                 <field name="name"/>
                 <field name="method_work" />
                 <field name="name_seq"/>
+                <field name="birth_day" />
             </tree>
         </field>
     </record>
@@ -35,6 +36,7 @@
                         <group>
                             <field name="name" placeholder="Mã nhân viên" />
                             <field name="name_seq" />
+                            <field name="birth_day" />
                             <field name="email" />
                             <field name="phone" />
                             <field name="method_work" />

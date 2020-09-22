@@ -15,6 +15,14 @@ class EmployeeReport(models.Model):
         
         return self.env.ref('employees.report_checking_card_xls').report_action(self)
 
+    def print_report_all(self):
+
+        return self.env.ref('employees.report_all_checking_card_xls').report_action(self)
+
+    type_report = fields.Selection([
+        ('all', 'Tất cả nhân viên'),
+        ('clone', 'Từng nhân viên'),
+    ], string='Phương thức', default='all')
     employee_line = fields.One2many('employee.lines','report_id_user', string='Nhân viên')
     start_date = fields.Date(string='Từ ngày')
     end_date = fields.Date(string='Đến ngày')
@@ -26,11 +34,8 @@ class EmployeeReportLines(models.Model):
     _description = 'Appointment Lines'
 
     employee_name = fields.Many2one('employees.employee', string='Nhân viên')
-    type_report = fields.Selection([
-        ('all', 'Tất cả nhân viên'),
-        ('clone', 'Từng nhân viên'),
-    ], string='Phương thức', default='all')
-    product_qty = fields.Integer(string="Quantity")
+
+    # product_qty = fields.Integer(string="Quantity")
     report_id_user = fields.Many2one('employees.user.has.scheduler', string='Report ID')
     method_work = fields.Selection('Phương thức làm việc', related='employee_name.method_work')
     status_work = fields.Selection('Mã chấm công', related='employee_name.status_work')
